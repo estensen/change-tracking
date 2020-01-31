@@ -9,6 +9,6 @@ insert into BOOKSTORE.BOOKS (ISBN, TITLE, AUTHOR) values
 --- Maybe create id instead of using isbn
 select B.ISBN, B.TITLE, B.AUTHOR, CT.SYS_CHANGE_OPERATION, CT.SYS_CHANGE_COLUMNS, CT.SYS_CHANGE_CONTEXT
 from BOOKSTORE.BOOKS as B
-right outer join CHANGETABLE(CHANGES BOOKSTORE.BOOKS, @last_synchronization_version) as CTA
+right outer join CHANGETABLE(CHANGES BOOKSTORE.BOOKS, @last_synchronization_version) as CT
 on B.ID = CT.ID
 
