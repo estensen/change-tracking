@@ -6,6 +6,7 @@ set change_tracking = in (
 
 
 create table BOOKSTORE.BOOKS (
+	ID int identify(1,1),
 	ISBN char(13) not null,
 	TITLE varchar(256) not null,
 	AUTHOR varchar(256) not null,
