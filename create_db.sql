@@ -1,6 +1,6 @@
 create database BOOKSTORE
 alter database BOOKSTORE
-set change_tracking = in (
+set change_tracking = on (
 	change_retention = 2 days, auto_cleanup = on
 );
 
