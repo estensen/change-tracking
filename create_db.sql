@@ -12,6 +12,9 @@ create table BOOKSTORE.BOOKS (
 	AUTHOR varchar(256) not null,
 );
 
+alter table BOOKS
+add constraint PK_BOOKS_ID primary key clustered (ID);
+
 alter table BOOKSTORE.BOOKS
 enable change_tracking
 with (track_columns_updated = on)
