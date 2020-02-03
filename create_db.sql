@@ -5,7 +5,7 @@ set change_tracking = on (
 );
 
 
-create table BOOKSTORE.BOOKS (
+create table BOOKS (
 	ID int identity(1,1),
 	ISBN char(13) not null,
 	TITLE varchar(256) not null,
@@ -15,12 +15,12 @@ create table BOOKSTORE.BOOKS (
 alter table BOOKS
 add constraint PK_BOOKS_ID primary key clustered (ID);
 
-alter table BOOKSTORE.BOOKS
+alter table BOOKS
 enable change_tracking
 with (track_columns_updated = on)
 
 
-insert into BOOKSTORE.BOOKS (ISBN, TITLE, AUTHOR) values
+insert into BOOKS (ISBN, TITLE, AUTHOR) values
 	('9781503261969', 'Emma', 'Jayne Austen'),
 	('9781505255607', 'The Time Machine', 'H. G. Wells'),
 	('9781503379640', 'The Prince', 'Niccolò Machiavelli')
