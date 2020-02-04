@@ -6,14 +6,11 @@ set change_tracking = on (
 
 
 create table BOOKS (
-	ID int identity(1,1),
+	ID int identity(1,1) primary key,
 	ISBN char(13) not null,
 	TITLE varchar(256) not null,
 	AUTHOR varchar(256) not null,
 );
-
-alter table BOOKS
-add constraint PK_BOOKS_ID primary key clustered (ID);
 
 alter table BOOKS
 enable change_tracking
