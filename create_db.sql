@@ -16,6 +16,9 @@ alter table BOOKS
 enable change_tracking
 with (track_columns_updated = on)
 
+-- Make sure change tracking is consistent
+alter database BOOKSTORE set allow_snapshot_isolation on;
+
 
 insert into BOOKS (ISBN, TITLE, AUTHOR) values
 	('9781503261969', 'Emma', 'Jayne Austen'),
