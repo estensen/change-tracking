@@ -25,3 +25,25 @@ insert into MIRROR (ID, ISBN, TITLE, AUTHOR) values
 	(7, '9781449373321', 'New book', 'Anon')
 ;
 
+
+-- Only get the rows where the title changed
+declare @last_synchronization_version bigint;
+SELECT
+	TITLE_CHANGE =
+		change_tracking_is_column_in_mask
+		(columnproperty(object_id('BOOKS'), 'title', 'columnid')
+		,CT.SYS_CHANGE_COLUMNS),
+	CT.SYS_CHANGE_OPERATION,
+	CT.ID,
+	CT.SYS_CHANGE_COLUMNS,
+	B.ISBN,
+	B.TITLE,
+	B.AUTHOR
+FROM
+	BOOKS AS B
+	RIGHT OUTER JOIN
+		CHANGETABLE (CHANGES BOOKS, @last_synchronization_version)
+	AS CT
+	ON B.ID = CT.ID
+;
+
