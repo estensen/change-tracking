@@ -13,3 +13,15 @@ from BOOKS as B
 right outer join CHANGETABLE(CHANGES BOOKS, @last_synchronization_version) as CT
 on B.ID = CT.ID
 
+
+create table MIRROR (
+	ID int identity(1,1) primary key,
+	ISBN char(13) not null,
+	TITLE varchar(256) not null,
+	AUTHOR varchar(256) not null,
+);
+set identity_insert MIRROR on;
+insert into MIRROR (ID, ISBN, TITLE, AUTHOR) values
+	(7, '9781449373321', 'New book', 'Anon')
+;
+
